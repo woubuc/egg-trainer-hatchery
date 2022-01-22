@@ -5,7 +5,7 @@ import CreatureTechniquesList from '$lib/components/CreatureTechniquesList.svelt
 import type { CreatureDetail, TechniqueKey } from '$lib/models/creature';
 import { creatureColours, Element, Occupation, TrainingData } from '$lib/models/creature';
 import { time } from '$lib/time';
-import { onDestroy, onMount } from 'svelte';
+import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 import type { Unsubscriber } from 'svelte/store';
 
 export let creature: CreatureDetail;
@@ -27,6 +27,9 @@ onMount(() => {
 
 		let finishTime = new Date(creature.training.finishTime).getTime();
 		if (finishTime < t) {
+			if (creature.inspect != false) {
+				creature.inspect.training[creature.training.stat]++;
+			}
 			creature.occupation = Occupation.None;
 			creature.training = false;
 		}
