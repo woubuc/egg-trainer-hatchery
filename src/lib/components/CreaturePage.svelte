@@ -58,7 +58,7 @@ function setTraining(evt: CustomEvent<TrainingData>) {
 	<div class="lg:fixed top-0 left-0 w-full lg:h-full lg:flex items-center py-12 lg:py-0 overflow-hidden">
 		<div class="flex-grow py-2.5 bg-white shadow-sm -skew-y-6">
 			<div
-				class="flex justify-center lg:h-[500px] -mx-6 px-12 py-2 bg-gradient-to-b from-orange-200 to-orange-100">
+				class="flex justify-center lg:h-[500px] -mx-6 px-12 py-2 bg-gradient-to-b { colours.bg }">
 
 				<!-- On small screens, the creature is shown above the info -->
 				<img
@@ -101,7 +101,7 @@ function setTraining(evt: CustomEvent<TrainingData>) {
 							<div class="flex items-center">
 								<h2 class="flex-grow font-bold text-2xl text-stone-800">{ name }</h2>
 								<span
-									class="px-2.5 py-0.5 bg-orange-500 rounded-full font-medium uppercase text-white text-sm leading-2">{ creature.element }</span>
+									class="px-2.5 py-0.5 { colours.main } rounded-full font-medium uppercase text-white text-sm leading-2">{ creature.element }</span>
 							</div>
 							<p class="mb-2.5 text-stone-600 leading-3">{ creature.rarity } { creature.species }</p>
 							<!--					<img src="https://eggtrainer.com/img/occupations/breeding.png" alt="icon" class="inline-block w-10 bg-rose-200 px-2.5 py-1 rounded-full" />-->
