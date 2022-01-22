@@ -3,7 +3,7 @@ import CreatureOccupationSelector from '$lib/components/CreatureOccupationSelect
 import CreatureStats from '$lib/components/CreatureStats.svelte';
 import CreatureTechniquesList from '$lib/components/CreatureTechniquesList.svelte';
 import type { CreatureDetail, TechniqueKey } from '$lib/models/creature';
-import { Occupation, TrainingData } from '$lib/models/creature';
+import { creatureColours, Element, Occupation, TrainingData } from '$lib/models/creature';
 import { time } from '$lib/time';
 import { onDestroy, onMount } from 'svelte';
 import type { Unsubscriber } from 'svelte/store';
@@ -14,6 +14,8 @@ let name = creature.name;
 if (creature.nickname) {
 	name = creature.nickname;
 }
+
+$: colours = creatureColours(creature.element);
 
 let unsubscribe: Unsubscriber | null = null;
 
