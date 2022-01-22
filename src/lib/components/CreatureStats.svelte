@@ -35,7 +35,13 @@ export let creature: CreatureDetail;
 </div>
 
 <div class="bg-white px-6 py-4 rounded shadow-lg">
-	<h2 class="mb-1 text-stone-500 font-semibold">Training</h2>
+	<div class="flex items-center justify-between mb-1">
+		<h2 class="text-stone-500 font-semibold">Training</h2>
+		<p class="px-2 bg-stone-200 bg-opacity-75 rounded-full text-sm text-stone-500 leading-5">
+			<strong class="font-medium">{ 32 - creature.inspect.training.health - creature.inspect.training.strength - creature.inspect.training.power - creature.inspect.training.speed}</strong>
+			<span class="font-light">remaining</span>
+		</p>
+	</div>
 
 	<div class="mb-2 space-y-3">
 		<CreatureStat
