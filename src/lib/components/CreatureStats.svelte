@@ -1,5 +1,6 @@
 <script lang="ts">
 import CreatureStat from '$lib/components/CreatureStat.svelte';
+import { Occupation, Stat } from '$lib/models/creature';
 import type { CreatureDetail } from '$lib/models/creature';
 
 export let creature: CreatureDetail;
@@ -37,9 +38,33 @@ export let creature: CreatureDetail;
 	<h2 class="mb-1 text-stone-500 font-semibold">Training</h2>
 
 	<div class="mb-2 space-y-3">
-		<CreatureStat label="Trained Health" value={ creature.inspect.training.health } max="32" colours="bg-red-400" />
-		<CreatureStat label="Trained Speed" value={ creature.inspect.training.speed } max="32" colours="bg-yellow-400" />
-		<CreatureStat label="Trained Strength" value={ creature.inspect.training.strength } max="32" colours="bg-indigo-400" />
-		<CreatureStat label="Trained Power" value={ creature.inspect.training.power } max="32" colours="bg-purple-400" />
+		<CreatureStat
+			label="Trained Health"
+			value={ creature.inspect.training.health }
+			max="32"
+			pending={ creature.occupation === Occupation.Training && creature.training.stat === Stat.Health ? 1 : 0 }
+			locked={ creature.inspect.training.speed + creature.inspect.training.strength + creature.inspect.training.power }
+			colours="bg-red-400" />
+		<CreatureStat
+			label="Trained Speed"
+			value={ creature.inspect.training.speed }
+			max="32"
+			pending={ creature.occupation === Occupation.Training && creature.training.stat === Stat.Speed ? 1 : 0 }
+			locked={ creature.inspect.training.health + creature.inspect.training.strength + creature.inspect.training.power }
+			colours="bg-yellow-400" />
+		<CreatureStat
+			label="Trained Strength"
+			value={ creature.inspect.training.strength }
+			max="32"
+			pending={ creature.occupation === Occupation.Training && creature.training.stat === Stat.Strength ? 1 : 0 }
+			locked={ creature.inspect.training.health + creature.inspect.training.speed + creature.inspect.training.power }
+			colours="bg-indigo-400" />
+		<CreatureStat
+			label="Trained Power"
+			value={ creature.inspect.training.power }
+			max="32"
+			pending={ creature.occupation === Occupation.Training && creature.training.stat === Stat.Power ? 1 : 0 }
+			locked={ creature.inspect.training.health + creature.inspect.training.speed + creature.inspect.training.strength }
+			colours="bg-purple-400" />
 	</div>
 </div>
