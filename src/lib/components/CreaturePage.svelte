@@ -119,23 +119,22 @@ function setTraining(evt: CustomEvent<TrainingData>) {
 					</div>
 
 					<div class="flex flex-col gap-2 sm:gap-4">
-						<CreatureStats {creature} />
-						<!--{#if creature.inspect}-->
+						{#if creature.inspect}
+							<CreatureStats {creature} />
+						{:else}
+							<div class="flex-1 bg-white px-6 py-4 rounded shadow-lg">
+								<div class="flex items-center h-full">
+									<div class="mb-4 py-6 text-sm font-light text-stone-600 text-center space-y-2">
+										<p>You need a magnifying glass to inspect creatures properly.</p>
+										<p>Go <a href="/game/shop"
+												 class="underline text-stone-700 hocus:text-violet-600">buy one now</a>.
+										</p>
+										<!--								<pre class="text-xs w-1/2">{ JSON.stringify(creature, null, 2) }</pre>-->
+									</div>
+								</div>
+							</div>
 
-						<!--{:else}-->
-						<!--	<div class="flex-1 bg-white px-6 py-4 rounded shadow-lg">-->
-						<!--		<div class="flex items-center h-full">-->
-						<!--			<div class="mb-4 py-6 text-sm font-light text-stone-600 text-center space-y-2">-->
-						<!--				<p>You need a magnifying glass to inspect creatures properly.</p>-->
-						<!--				<p>Go <a href="/game/shop"-->
-						<!--						 class="underline text-stone-700 hocus:text-violet-600">buy one now</a>.-->
-						<!--				</p>-->
-						<!--				&lt;!&ndash;								<pre class="text-xs w-1/2">{ JSON.stringify(creature, null, 2) }</pre>&ndash;&gt;-->
-						<!--			</div>-->
-						<!--		</div>-->
-						<!--	</div>-->
-
-						<!--{/if}-->
+						{/if}
 					</div>
 				</div>
 			</div>

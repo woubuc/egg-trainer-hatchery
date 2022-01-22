@@ -64,6 +64,21 @@ export interface TrainingData {
 	finishTime: string;
 }
 
+export interface SpeciesStats {
+	health: number;
+	speed: number;
+	physicalAttack: number;
+	physicalDefence: number;
+	magicalAttack: number;
+	magicalDefence: number;
+}
+
+export interface Stats {
+	species: SpeciesStats;
+	genetics: Record<Stat, number>;
+	training: Record<Stat, number>;
+}
+
 export interface Creature {
 	index: CreatureIndex;
 	name: string;
@@ -77,7 +92,7 @@ export interface Creature {
 }
 
 export interface CreatureDetail extends Creature {
-	inspect: false,
+	inspect: false | Stats,
 	training: false | TrainingData,
 
 	techniques: Technique[],
