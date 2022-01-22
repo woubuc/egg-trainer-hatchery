@@ -9,8 +9,6 @@ let eggs = api.eggs();
 {#await eggs}
 	<Loader message="Loading eggs" />
 {:then eggs}
-	<Loader />
-	<Loader message="foo" />
 	<PageContainer>
 		<pre>{ JSON.stringify(eggs, null, 2) }</pre>
 	</PageContainer>
